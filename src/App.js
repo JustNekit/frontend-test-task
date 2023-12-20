@@ -23,12 +23,16 @@ const App = () => {
         <h1>{showNewsFeed ? "Новости" : "Темы"}</h1>
       </header>
       {showNewsFeed ? <NewsFeed /> : <ThemeSwitcher />}
-      <ul class="nav-bar-content">
-        <li class="nav-bar">
-          <button onClick={() => setShowNewsFeed(true)}>Show News Feed</button>
+      <ul class="nav-bar">
+        <li class="nav-bar-item">
+          <button class="nav-bar-item__button" onClick={() => setShowNewsFeed(true)}>
+            <span class="nav-bar-item__icon material-symbols-outlined">news</span>
+          </button>
         </li>
-        <li class="nav-bar">
-        <button onClick={() => setShowNewsFeed(false)}>Toggle Theme Switcher</button>
+        <li class="nav-bar-item">
+        <button class="nav-bar-item__button" onClick={() => setShowNewsFeed(false)}>
+          <span class="nav-bar-item__icon material-symbols-outlined">palette</span>
+        </button>
         </li>
       </ul>
     </div>

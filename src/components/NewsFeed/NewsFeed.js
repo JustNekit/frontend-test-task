@@ -35,7 +35,7 @@ const NewsFeed = () => {
           <li key={item.id}>{item.title}</li>
         ))}
       </ul>
-      <button onClick={handleRefresh}>Refresh</button>
+      <button class="refresh-button" onClick={handleRefresh}>Обновить новости</button>
     </div>
   );
 };
