@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import NewsFeed from './components/NewsFeed/NewsFeed.js';
+import ThemeSwitcher from './components/ThemeSwitcher/ThemeSwitcher.js';
 import './App.css';
+import './components/NewsFeed/NewsFeed.css';
+import './components/ThemeSwitcher/ThemeSwitcher.css';
+import useTheme from './hooks/useTheme';
 
-function App() {
+const App = () => {
+  const [showNewsFeed, setShowNewsFeed] = useState(true);
+  const { fetchTheme } = useTheme();
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('appTheme');
+    if (savedTheme) {
+      fetchTheme(savedTheme);
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <h1>{showNewsFeed ? "Новости" : "Темы"}</h1>
       </header>
+      {showNewsFeed ? <NewsFeed /> : <ThemeSwitcher />}
+      <ul class="nav-bar-content">
+        <li class="nav-bar">
+          <button onClick={() => setShowNewsFeed(true)}>Show News Feed</button>
+        </li>
+        <li class="nav-bar">
+        <button onClick={() => setShowNewsFeed(false)}>Toggle Theme Switcher</button>
+        </li>
+      </ul>
     </div>
   );
-}
+};
 
 export default App;
