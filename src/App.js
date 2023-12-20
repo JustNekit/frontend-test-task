@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import NewsFeed from './components/NewsFeed/NewsFeed.js';
 import ThemeSwitcher from './components/ThemeSwitcher/ThemeSwitcher.js';
 import './App.css';
@@ -18,24 +19,32 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <Router>
       <header>
         <h1>{showNewsFeed ? "Новости" : "Темы"}</h1>
       </header>
+      <Routes>
+        <Route path="/">
+          <NewsFeed />
+        </Route>
+        <Route path="/theme-switcher">
+          <ThemeSwitcher />
+        </Route>
+      </Routes>
       {showNewsFeed ? <NewsFeed /> : <ThemeSwitcher />}
       <ul class="nav-bar">
         <li class="nav-bar-item">
-          <button class="nav-bar-item__button" onClick={() => setShowNewsFeed(true)}>
+          <Link class="nav-bar-item__button" to="/">
             <span class="nav-bar-item__icon material-symbols-outlined">news</span>
-          </button>
+          </Link>
         </li>
         <li class="nav-bar-item">
-        <button class="nav-bar-item__button" onClick={() => setShowNewsFeed(false)}>
+        <Link to="/theme-switcher" class="nav-bar-item__button" >
           <span class="nav-bar-item__icon material-symbols-outlined">palette</span>
-        </button>
+        </Link>
         </li>
       </ul>
-    </div>
+    </Router>
   );
 };
 
