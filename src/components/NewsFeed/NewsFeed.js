@@ -1,4 +1,3 @@
-// NewsFeed.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NewsFeed.css';
@@ -28,14 +27,20 @@ const NewsFeed = () => {
   };
 
   return (
-    <div>
+    <div class="news-feed-wrapper">
       {loading && <p>Loading...</p>}
-      <ul>
+      <ul class="news-feed">
         {news.map((item) => (
-          <li key={item.id}>{item.title}</li>
+          <li key={item.id} class="news-feed__item">
+            <h3>{item.title}</h3>
+            <p>{item.content}</p>
+            <hr className="content-divider" />
+          </li>
         ))}
       </ul>
-      <button class="refresh-button" onClick={handleRefresh}>Обновить новости</button>
+      <button className="refresh-button" onClick={handleRefresh}>
+        Обновить новости
+      </button>
     </div>
   );
 };
