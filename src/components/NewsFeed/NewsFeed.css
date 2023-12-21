@@ -11,4 +11,19 @@ h1 {
     padding: 0px;
     margin: 0px;
   }
-  
+.news-feed {
+  list-style: none;
+  margin-bottom: 78px;
+}
+
+.news-feed__item {
+  padding: 0 15px;
+}
+
+.content-divider {
+  margin: 10px 0;
+  border-top: 1px;
+  color: var(--text-color);
+  list-style: none;
+  padding: 0;
+}
